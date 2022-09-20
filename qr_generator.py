@@ -2,8 +2,10 @@
 import qrcode
 from PIL import Image
 logo_file_name = 'img/logo.png'
+import sys
 
-data = "http//:resqr.tech/user/profile/fjfjflkasjdlkfjalksjdlkfjffjskdlajfkjhjgfhhgfhhhfhgfhgfghfghfghfppppppppppppppp"
+data = sys.argv[1]
+print(data)
 qr_code = qrcode.QRCode(
     error_correction=qrcode.constants.ERROR_CORRECT_H, border=1
 )
