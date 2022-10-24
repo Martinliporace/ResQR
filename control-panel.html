@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static',filename='styles/ControlPanel.css') }}"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+     <script src="https://ajax.googleapis.com/ajax/libs/
+               jquery/3.3.1/jquery.min.js"></script>
+
+    <title>Control-Panel</title>
+  </head>
+  <body>
+    <div class="svgBackground">
+      <div class="side-bar" id="sticky-sidebar">
+        <a href="http://localhost:8000/"
+          ><img src="static/LogoPngBlancoConSombra.png" class="logo"
+        /></a>
+        <ul class="list-group">
+          <li onclick="" class="list-item">Perfil</li>
+          <li class="list-item">Seguridad</li>
+          <li class="list-item">Ayuda</li>
+          <li class="list-item">Contacto</li>
+          <li class="list-item">Nosotros</li>
+        </ul>
+      </div>
+
+      <div class="wrapper">
+        <div class="formulario">
+            <div class="edit-profile">
+          <h1 class="editProfile">EDITAR PERFIL</h1>
+        </div>
+          <br /><form id='formulario'action="{{url_for('addUser')}}" method="post">
+          <div class="PersonalInfo">
+            <div class="datos-personales">
+              <span id="sectionPersonal">Datos personales</span>
+            </div>
+            <input
+              class="name-input"
+              id="name-input"
+              type="text"
+              name="name-input"
+              placeholder="NOMBRE COMPLETO"
+            />
+            <div class="documentNacionality">
+              <input
+                id="document"
+                type="number"
+                name="document"
+                pattern="[0-9]"
+                placeholder="DOCUMENTO"
+              />
+              <div class="nacionality">
+                <p>
+                  Nacionalidad
+                  <select name="pais" class="deploy-countries">
+                    <option value="AR">Argentina</option>
+                    <option value="BO">Bolivia</option>
+                    <option value="BR">Brasil</option>
+                    <option value="CL">Chile</option>
+                    <option value="CO">Colombia</option>
+                    <option value="CR">Costa Rica</option>
+                    <option value="CU">Cuba</option>
+                    <option value="DM">Dominica</option>
+                    <option value="EC">Ecuador</option>
+                    <option value="SV">El Salvador</option>
+                    <option value="ES">España</option>
+                    <option value="US">Estados Unidos</option>
+                    <option value="GT">Guatemala</option>
+                    <option value="GY">Guayana</option>
+                    <option value="GF">Guayana Francesa</option>
+                    <option value="HN">Honduras</option>
+                    <option value="MX">México</option>
+                    <option value="NI">Nicaragua</option>
+                    <option value="PA">Panamá</option>
+                    <option value="PY">Paraguay</option>
+                    <option value="PE">Perú</option>
+                    <option value="PR">Puerto Rico</option>
+                    <option value="DO">República Dominicana</option>
+                    <option value="UY" selected>Uruguay</option>
+                    <option value="VE">Venezuela</option>
+                  </select>
+                </p>
+              </div>
+              <div class="date">
+                <input type="date" name="BirthDate" id="BirthDate" />
+              </div>
+            </div>
+    <p>
+    Sexo
+
+    <input type="radio" name="sexo" value="Masculino" id="masculino"> Masculino
+    <input type="radio" name="sexo" value="Femenino" id="femenino"> Femenino
+
+                  <div id="pregnant_block" style="display: none;">
+                  ¿Actualmente embarazada?
+                  <select  id="pregnant" name="pregnant" value="select">
+                    <option value="None">---</option>
+                    <option value="si">SI</option>
+                    <option value="no">NO</option>
+                  </select>
+                  </div>
+
+                  <h5>
+                    EMERGENCIA MÓVIL
+                  </h5>
+                  <input
+                    class="service"
+                    id="emergencyName"
+                    type="text"
+                    name="emergency"
+                    placeholder="NOMBRE DE LA EMPRESA"
+                  />
+
+                  <input
+                    class="service"
+                    id="emergencyTel"
+                    type="number"
+                    name="emergency"
+                    placeholder="TELÉFONO"
+                  />
+                    <br>
+                  <h5>
+                    MUTUALISTA
+                  </h5>
+                  <input
+                    class="service"
+                    id="mutualist"
+                    type="text"
+                    name="mutualist"
+                    placeholder="NOMBRE DE LA EMPRESA"
+                  />
+
+                  <input
+                    class="service"
+                    id="mutualistTel"
+                    type="number"
+                    name="mutualist"
+                    placeholder="TELÉFONO"
+                  />
+                    <br>
+                  <h5>
+                    CONTACTO DE EMERGENCIA PRIMARIO
+                  </h5>
+                  <input
+                    class="contact"
+                    id="contact1Name"
+                    type="text"
+                    name="contact1"
+                    placeholder="NOMBRE DE LA PERSONA"
+                  />
+                  <input
+                    class="contact"
+                    id="contact1Relation"
+                    type="text"
+                    name="contact1"
+                    placeholder="PARENTESCO/RELACIÓN"
+                  />
+                  <input
+                    class="contact"
+                    id="contact1Tel"
+                    type="number"
+                    name="contact1"
+                    placeholder="TELÉFONO"
+                  />
+                    <br>
+                  <h5>
+                    CONTACTO DE EMERGENCIA SECUNDARIO
+                  </h5>
+                  <input
+                    class="contact"
+                    id="contact2Name"
+                    type="text"
+                    name="contact2"
+                    placeholder="NOMBRE DE LA PERSONA"
+                  />
+                  <input
+                    class="contact"
+                    id="contact2Relation"
+                    type="text"
+                    name="contact2"
+                    placeholder="PARENTESCO/RELACIÓN"
+                  />
+                  <input
+                    class="contact"
+                    id="contact2Tel"
+                    type="number"
+                    name="contact2"
+                    placeholder="TELÉFONO"
+                  />
+
+
+
+
+
+          <div class="antecedentesMedicos">
+            <div class="antecedentes-titulo">
+              <span id="sectionTitle"
+                >Antecedentes medicos de **GRAVEDAD**</span
+              >
+            </div>
+            <div class="documentNacionality">
+                <div class="sangre">
+
+                    TIPO DE SANGRE
+                    <select name="sangre" value="select">
+                      <option value="None">---</option>
+                      <option value="a-rh+">A Rh+</option>
+                      <option value="a-rh-">A Rh-</option>
+                      <option value="b-rh+">B Rh+</option>
+                      <option value="b-rh-">B Rh-</option>
+                      <option value="ab-rh">AB Rh+</option>
+                      <option value="ab-rh-">AB Rh-</option>
+                      <option value="o-rh+">O Rh+</option>
+                      <option value="o-rh-">O Rh-</option>
+                    </select>
+                  </p>
+                  <span id="menu"> </span>
+                </div>
+            </div>
+          </div>
+            <div class="pregnant">
+            <div class="diabetes">
+              <p>
+                DIABETES
+                <select name="diabetes" value="select">
+                  <option value="None">---</option>
+                  <option value="si">SI</option>
+                  <option value="no">NO</option>
+                </select>
+                <select name="diabetes_tipo" value="select">
+                  <option value="None">TIPO</option>
+                  <option value="si">TIPO 1</option>
+                  <option value="no">TIPO 2</option>
+                  <option value="na">NO APLICA</option>
+                </select>
+              </p>
+            </div>
+            <div class="diabetes">
+              <p>
+                INSULINODEPENDIENTE
+                <select name="insulina" value="select">
+                  <option value="None">---</option>
+                  <option value="si">SI</option>
+                  <option value="no">NO</option>
+                </select>
+              </p>
+            </div>
+          </div>
+            <div class="patologias">
+              <div>
+                <h3>PATOLOGIAS Y ANTECEDENTES NEURONALES:</h3>
+              </div>
+              <div>
+                <p class="comentario">Marque si posee alguna y añada los comentarios que considere pertinentes</p>
+              </div>
+            </div>
+            <div class="list-group">
+              <label class="list-group-item">
+                <div class="list-group-item2">
+                  <div class="tumores-text">
+                    <input
+                      class="form-check-input me-1"
+                      type="checkbox"
+                      name="alzheimer"
+                      value="Alzheimer"
+                    />
+                    Alzheimer
+                  </div>
+
+                  <div class="tumores-input">
+                    <input
+                      id="tumor-input"
+                      type="text"
+                      name="alzheimer"
+                      placeholder="Ejemplo: reiterados episodios de pèrdida de nociones"
+                    />
+                  </div>
+                </div>
+              </label>
+              <label class="list-group-item">
+                <div class="list-group-item2">
+                  <div class="tumores-text">
+                    <input
+                      class="form-check-input me-1"
+                      type="checkbox"
+                      name="epilepsia"
+                      value="Epilepsia"
+                    />
+                    Epilepsia
+                  </div>
+
+                  <div class="tumores-input">
+                    <input
+                      id="epilepsia-input"
+                      type="text"
+                      name="epilepsia"
+                      placeholder="Ejemplo: ùltimo ataque el xx/xx/xxxx"
+                    />
+                  </div>
+                </div>
+              </label>
+
+              </label>
+              <label class="list-group-item">
+                <div class="list-group-item2">
+                  <div class="tumores-text">
+                    <input
+                      class="form-check-input me-1"
+                      type="checkbox"
+                      name="traumatismos"
+                      value="Traumatismos craneoencefálicos"
+                    />
+                    Traumatismos craneoencefálicos
+                  </div>
+
+                  <div class="tumores-input">
+                    <input
+                      id="traumatismos"
+                      type="text"
+                      name="Traumatismos"
+                      placeholder="Ejemplo: traumatismo con pèrdida de conocimiento el xx/xx/xxxx"
+                    />
+                  </div>
+                </div>
+              </label>
+              <label class="list-group-item">
+                <div class="list-group-item2">
+                  <div class="tumores-text">
+                    <input
+                      class="form-check-input me-1"
+                      type="checkbox"
+                      name="tumor_cer"
+                      value="Tumor cerebral"
+                    />
+                    Tumores cerebrales o metástasis
+                  </div>
+
+                  <div class="tumores-input">
+                    <input
+                      id="tumores-input"
+                      type="text"
+                      name="tumor_cer"
+                      placeholder="Ejemplo: Astrocitoma detectado el xx/xx/xxxx"
+                    />
+                  </div>
+                </div>
+              </label>
+            </div>
+            <br />
+            <br />
+            <div class="patologias">
+              <div>
+                <h3>PATOLOGIAS/OPERACIONES CARDÌACAS DE RIESGO:</h3>
+              </div>
+              <div>
+                <p class="comentario">Marque si posee alguna y añada los comentarios que considere pertinentes</p>
+              </div>
+            </div>
+            <div class="listas">
+              <div class="list-group">
+                <label class="list-group-item">
+                  <div class="list-group-item2">
+                    <div class="tumores-text">
+                      <input
+                        class="form-check-input me-1"
+                        type="checkbox"
+                        name="miocardiopatia"
+                        value="Miocardiopatía"
+                      />
+                      Enfermedad del músculo cardíaco
+                    </div>
+
+                    <div class="tumores-input">
+                      <input
+                        id="miocardiopatia-input"
+                        type="text"
+                        name="miocardiopatia"
+                        placeholder="Ejemplo: antecedentes de miocardiopatía hipertrófica con internaciòn"
+                      />
+                    </div>
+                  </div>
+                </label>
+                <label class="list-group-item">
+                  <div class="list-group-item2">
+                    <div class="tumores-text">
+                      <input
+                        class="form-check-input me-1"
+                        type="checkbox"
+                        name="valvulas"
+                        value="Enfermedad de las válvulas cardíacas"
+                      />
+                      Enfermedad de las válvulas cardíacas
+                    </div>
+
+                    <div class="tumores-input">
+                      <input
+                        id="Enfermedad_valvulas-input"
+                        type="text"
+                        name="valvulas"
+                        placeholder="Ejemplo: En tratamiento por estenosis"
+                      />
+                    </div>
+                  </div>
+                </label>
+                <label class="list-group-item">
+                  <div class="list-group-item2">
+                    <div class="tumores-text">
+                      <input
+                        class="form-check-input me-1"
+                        type="checkbox"
+                        name="operacion_card"
+                        value="Operación al corazón"
+                      />
+                      Operación al corazón
+                    </div>
+
+                    <div class="tumores-input">
+                      <input
+                        id="operaciones_coronarias-input"
+                        type="text"
+                        name="operacion_card"
+                        placeholder="Ejemplo: cateterismo cardíaco"
+                      />
+                    </div>
+                  </div>
+                </label>
+                <label class="list-group-item">
+                  <div class="list-group-item2">
+                    <div class="tumores-text">
+                      <input
+                        class="form-check-input me-1"
+                        type="checkbox"
+                        name="paro"
+                        value="Paro cardíaco"
+                      />
+                      Paro cardíaco
+                    </div>
+
+                    <div class="tumores-input">
+                      <input
+                        id="paro_cardiaco-input"
+                        type="text"
+                        name="paro"
+                        placeholder="Ejemplo: paro cardíaco el xx/xx/xxxx"
+                      />
+                    </div>
+                  </div>
+                </label>
+                  </div>
+              </label>
+              <br>
+              <p>¿Tiene un marcapasos?
+                        <input type="radio" name="marcapasos" value="SI" id="marcapasosSi"> SI
+                        <input type="radio" name="marcapasos" value="NO" id="marcapasosNo"> NO
+              <p>¿Tiene un cardiodesfibrilador implantado?
+                        <input type="radio" name="desfibrilador" value="SI" id="desfibriladorSi"> SI
+                        <input type="radio" name="desfibrilador" value="NO" id="desfibriladorNo"> NO
+              <p>¿Tiene un stent implantado?
+                        <input type="radio" name="stent" value="SI" id="stentSi"> SI
+                        <input type="radio" name="stent" value="NO" id="stentNo"> NO
+              <p>¿Le han realizado un bypass?
+                        <input type="radio" name="bypass" value="SI" id="bypassSi"> SI
+                        <input type="radio" name="bypass" value="NO" id="bypassNo"> NO
+                    <div class="tumores-input">
+              </div>
+            </div>
+            <br />
+            <br />
+            <div class="patologias">
+              <div>
+                <h3>PATOLOGIAS/OPERACIONES RESPIRATORIAS DE RIESGO:</h3>
+              </div>
+              <div>
+                <p class="comentario">Marque si posee alguna y añada los comentarios que considere pertinentes</p>
+              </div>
+            </div>
+            <div class="listas">
+              <div class="list-group">
+
+                <label class="list-group-item">
+                  <div class="list-group-item2">
+                    <div class="tumores-text">
+                      <input
+                        class="form-check-input me-1"
+                        type="checkbox"
+                        name="cancer_pulmonar"
+                        value="Cáncer pulmonar"
+                      />
+                      Cáncer pulmonar
+                    </div>
+
+                    <div class="tumores-input">
+                      <input
+                        id="cancer_pulmonar-input"
+                        type="text"
+                        name="cancer_pulmonar"
+                        placeholder="Ejemplo: en tratamiento desde xx/xx/xxxx"
+                      />
+                    </div>
+                  </div>
+                </label>
+                <br>
+              <p>¿Internaciòn por asma?
+                        <input type="radio" name="asma" value="SI" id="asmaSi"> SI
+                        <input type="radio" name="asma" value="NO" id="asmaNo"> NO
+                <p>¿Tiene EPOC?
+                        <input type="radio" name="epoc" value="SI" id="epocSi"> SI
+                        <input type="radio" name="epoc" value="NO" id="epocNo"> NO
+                <p>¿Es oxigenodependiente?
+                        <input type="radio" name="oxig" value="SI" id="oxigSi"> SI
+                        <input type="radio" name="oxig" value="NO" id="oxigNo"> NO
+              </div>
+            </div>
+
+            <div class="patologias">
+              <div>
+                <h3>ALERGIAS</h3>
+              </div>
+              <div>
+                <p class="comentario">Indique el/los alérgeno/s. Ejemplo: manì, morfina</p>
+              </div>
+            </div>
+            <div class="listas">
+              <div class="list-group">
+                <label class="list-group-item">
+                  <div class="list-group-item2">
+                    <div class="tumores-text">
+                      <input
+                        class="form-check-input me-1"
+                        type="checkbox"
+                        name="contactantes"
+                        value="Contactantes"
+                      />
+                      Contactantes
+                    </div>
+
+                    <div class="tumores-input">
+                      <input
+                        id="Contactantes-input"
+                        type="text"
+                        name="contactantes"
+                        placeholder="Alérgeno/s"
+                      />
+                    </div>
+                  </div>
+                </label>
+                <label class="list-group-item">
+                  <div class="list-group-item2">
+                    <div class="tumores-text">
+                      <input
+                        class="form-check-input me-1"
+                        type="checkbox"
+                        name="inhal"
+                        value="Inhalantes"
+                      />
+                      Inhalantes
+                    </div>
+
+                    <div class="tumores-input">
+                      <input
+                        id="Inhalantes-input"
+                        type="text"
+                        name="inhal"
+                        placeholder="Alérgeno/s"
+                      />
+                    </div>
+                  </div>
+                </label>
+                <label class="list-group-item">
+                  <div class="list-group-item2">
+                    <div class="tumores-text">
+                      <input
+                        class="form-check-input me-1"
+                        type="checkbox"
+                        name="ingest"
+                        value="Ingestantes"
+                      />
+                      Ingestantes
+                    </div>
+
+                    <div class="tumores-input">
+                      <input
+                        id="Ingestantes-input"
+                        type="text"
+                        name="ingest"
+                        placeholder="Alérgeno/s"
+                      />
+                    </div>
+                  </div>
+                </label>
+
+                 <br>
+              <p>¿Ha sufrido vasculitis por hipersensibilidad?
+                        <input type="radio" name="vascu" value="SI" id="vascuSi"> SI
+                        <input type="radio" name="vascu" value="NO" id="vascuNo"> NO
+              <p>¿Ha sufrido anafilaxia?
+                        <input type="radio" name="anaf" value="SI" id="anafSi"> SI
+                        <input type="radio" name="anaf" value="NO" id="anafNo"> NO
+              <p>¿Ha sufrido edema de glotis?
+                        <input type="radio" name="edema" value="SI" id="edemaSi"> SI
+                        <input type="radio" name="edema" value="NO" id="edemaNo"> NO
+
+
+              </div>
+            </div>
+          </div>
+
+          <h5>Medicación Regular</h5>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope=""></th>
+                <th scope="col">Medicamento</th>
+                <th scope="col">Dósis</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td><input name="medicacion1" type="text"/></td>
+                <td><input name="medicacion1" type="text"/></td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td><input name="medicacion2" type="text"/></td>
+                <td><input name="medicacion2" type="text"/></td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td><input name="medicacion3" type="text"/></td>
+                <td><input name="medicacion3" type="text"/></td>
+              </tr>
+                <th scope="row">4</th>
+                <td><input name="medicacion4" type="text"/></td>
+                <td><input name="medicacion4" type="text"/></td>
+              </tr>
+                <th scope="row">5</th>
+                <td><input name="medicacion5" type="text"/></td>
+                <td><input name="medicacion5" type="text"/></td>
+              </tr>
+                 <th scope="row">6</th>
+                <td><input name="medicacion6" type="text"/></td>
+                <td><input name="medicacion6" type="text"/></td>
+              </tr>
+                 <th scope="row">7</th>
+                <td><input name="medicacion7" type="text"/></td>
+                <td><input name="medicacion7" type="text"/></td>
+              </tr>
+                 <th scope="row">8</th>
+                <td><input name="medicacion8" type="text"/></td>
+                <td><input name="medicacion8" type="text"/></td>
+              </tr>
+                 <th scope="row">9</th>
+                <td><input name="medicacion9" type="text"/></td>
+                <td><input name="medicacion9" type="text"/></td>
+              </tr>
+                 <th scope="row">10</th>
+                <td><input name="medicacion10" type="text"/></td>
+                <td><input name="medicacion10" type="text"/></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="buttonsDiv">
+            <button type="submit" class="btn btn-primary btn-block mb-4"
+            >GUARDAR
+            </button>
+          </div>
+        </form>
+    <!-- Optional JavaScript -->
+    <script LANGUAGE="JavaScript">
+                  var pregnant_input = document.getElementById('pregnant_block');
+            document.getElementById('masculino').addEventListener('click', function(e) {
+            pregnant_input.style.display='none';
+            });
+
+            document.getElementById('femenino').addEventListener('click', function(e) {
+            pregnant_input.style.display='block';
+            });
+
+    </script>
+
+
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+
+
+        </div>
+        </div>
+      </div>
+  </body>
+</html>
