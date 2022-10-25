@@ -1,0 +1,27 @@
+.selector-for-some-widget {
+  box-sizing: content-box;
+}
+
+body {
+  background-image: linear-gradient(#24b13b, rgb(7, 43, 10));
+  height: 100vh;
+}
+
+.svgBackground {
+  background-image: url("../imgs/Element.svg");
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 1vmax;
+}
+
+.sign-in-text {
+  font-family: "Inter", sans-serif;
+  font-size: 2vmax;
+  font-weight: 700;
+}

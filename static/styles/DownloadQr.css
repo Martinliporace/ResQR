@@ -1,0 +1,112 @@
+body {
+  font-family: "Inter", sans-serif;
+  height: 100vh;
+  margin: 0%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(#24b13b, rgb(7, 43, 10));
+}
+
+.background {
+  background-image: url("../../assets/imgs/Element.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: row;
+  color: rgb(0, 0, 0);
+  font-family: "Inter", sans-serif;
+}
+
+.side-bar {
+  background: linear-gradient(
+    180deg,
+    #24b13b,
+    rgba(31, 194, 126, 0.8) 75.35%,
+    rgba(39, 193, 106, 0.2) 95.14%
+  );
+  width: 15vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
+  z-index: 1;
+  position: fixed;
+  margin: 0%;
+  font-family: "Inter", sans-serif;
+}
+
+.logo {
+  max-width: 98%;
+}
+
+.list-group {
+  width: 100%;
+  margin: 0%;
+  font-family: "Inter", sans-serif;
+  display: flex;
+  flex-direction: column;
+  padding: 0%;
+}
+
+.list-item {
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid;
+  border-color: rgb(255, 255, 255);
+  color: rgb(255, 255, 255);
+  font-weight: 500;
+  list-style: none;
+  padding: 15px 0px;
+  width: 100%;
+}
+
+.list-item:hover {
+  cursor: pointer;
+  background-color: rgb(0, 255, 140);
+  width: 100%;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+}
+
+.qrdownload {
+  max-width: 20vmax;
+  padding-left: 7vw;
+}
+
+.qrdownload-btn {
+  padding-left: 21.5vw;
+  padding-top: 20px;
+}
+
+.qrdownload-btn a {
+  background-color: rgb(0, 171, 114);
+  border-radius: 10px;
+  font-size: 1.5rem;
+  font-weight: 550;
+  font-style: oblique;
+  padding: 20px 25px;
+  color: rgb(255, 255, 255);
+  transition: background-color 150ms ease-in-out, box-shadow 150ms ease-in-out;
+  border: 3px solid;
+  border-color: rgb(0, 114, 69);
+}
+
+.qrdownload-btn a:hover {
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  background-color: rgba(0, 255, 170, 0.775);
+  border: 3px solid;
+  border-color: white;
+  font-weight: 800;
+}

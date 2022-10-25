@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Descargar QR</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/DownloadQr.css') }}" />
+  </head>
+  <body>
+    <div class="background">
+      <div class="side-bar" id="sticky-sidebar">
+        <a href="http://localhost:3002/"
+          ><img src="{{ url_for('static',filename='LogoPngBlancoConSombra.png') }}" class="logo"
+        /></a>
+        <ul class="list-group">
+          <li onclick="" class="list-item">Perfil</li>
+          <li class="list-item">Seguridad</li>
+          <li class="list-item">Ayuda</li>
+          <li class="list-item">Contacto</li>
+          <li class="list-item">Nosotros</li>
+          <li class="list-item">Descargar QR</li>
+        </ul>
+      </div>
+    {% for user in users %}
+    <div class="wrapper">
+    <div class="qrdownload">
+        <img src="{{url_for ('static', filename = './'+user.id+'.png')}}" alt="qrdownload" class="qrdownload"/>
+    </div>
+    <div class="qrdownload-btn">
+        <a download href="{{url_for ('static', filename = './'+user.id+'.png')}}">DESCARGAR</a>
+    </div>
+        </div>
+    {% endfor %}
+
+    </div>
+    <script></script>
+  </body>
+</html>
