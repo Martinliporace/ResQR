@@ -7,6 +7,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
+    <!--<link rel="stylesheet" href="/src/components/control-panel/ControlPanel.css">-->
     <link
       rel="stylesheet"
       href="{{ url_for('static',filename='styles/ControlPanel.css') }}"
@@ -34,8 +35,8 @@
   <body>
     <div class="svgBackground">
       <div class="side-bar" id="sticky-sidebar">
-        <a href="http://localhost:8000/"
-          ><img src="static/LogoPngBlancoConSombra.png" class="logo"
+        <a href="http://localhost:3002/"
+          ><img src="{{ url_for('static',filename='LogoPngBlancoConSombra.png') }}/" class="logo"
         /></a>
         <ul class="list-group">
           <li onclick="" class="list-item">Perfil</li>
@@ -53,9 +54,10 @@
         </div>
           <br /><form id='formulario'action="{{url_for('addUser')}}" method="post">
           <div class="PersonalInfo">
-            <div class="datos-personales">
-              <span id="sectionPersonal">Datos personales</span>
+            <div class="antecedentes-titulo">
+              <span id="sectionTitle">Datos personales</span>
             </div>
+            <div class="name-input">
             <input
               class="name-input"
               id="name-input"
@@ -63,7 +65,8 @@
               name="name-input"
               placeholder="NOMBRE COMPLETO"
             />
-            <div class="documentNacionality">
+          </div>
+          <div class="documentNacionality">
               <input
                 id="document"
                 type="number"
@@ -72,7 +75,7 @@
                 placeholder="DOCUMENTO"
               />
               <div class="nacionality">
-                <p>
+                <p class="p-deploy">
                   Nacionalidad
                   <select name="pais" class="deploy-countries">
                     <option value="AR">Argentina</option>
@@ -216,7 +219,7 @@
 
           <div class="antecedentesMedicos">
             <div class="antecedentes-titulo">
-              <span id="sectionTitle"
+              <span id="sectionTitle1"
                 >Antecedentes medicos de **GRAVEDAD**</span
               >
             </div>
@@ -238,39 +241,42 @@
                   </p>
                   <span id="menu"> </span>
                 </div>
+                <div class="diabetes">
+                  <p>
+                    DIABETES
+                    <select name="diabetes" value="select">
+                      <option value="None">---</option>
+                      <option value="si">SI</option>
+                      <option value="no">NO</option>
+                    </select>
+                    <select name="diabetes_tipo" value="select">
+                      <option value="None">TIPO</option>
+                      <option value="1">TIPO 1</option>
+                      <option value="2">TIPO 2</option>
+                      <option value="NONE">NO APLICA</option>
+                    </select>
+                  </p>
+                </div>
+
+                <div class="diabetes">
+                  <p>
+                    INSULINODEPENDIENTE
+                    <select name="insulina" value="select">
+                      <option value="None">---</option>
+                      <option value="si">SI</option>
+                      <option value="no">NO</option>
+                    </select>
+                  </p>
+                </div>
             </div>
           </div>
             <div class="pregnant">
-            <div class="diabetes">
-              <p>
-                DIABETES
-                <select name="diabetes" value="select">
-                  <option value="None">---</option>
-                  <option value="si">SI</option>
-                  <option value="no">NO</option>
-                </select>
-                <select name="diabetes_tipo" value="select">
-                  <option value="None">TIPO</option>
-                  <option value="si">TIPO 1</option>
-                  <option value="no">TIPO 2</option>
-                  <option value="na">NO APLICA</option>
-                </select>
-              </p>
-            </div>
-            <div class="diabetes">
-              <p>
-                INSULINODEPENDIENTE
-                <select name="insulina" value="select">
-                  <option value="None">---</option>
-                  <option value="si">SI</option>
-                  <option value="no">NO</option>
-                </select>
-              </p>
-            </div>
+
+
           </div>
             <div class="patologias">
               <div>
-                <h3>PATOLOGIAS Y ANTECEDENTES NEURONALES:</h3>
+                <h3>PATOLOGIAS Y ANTECEDENTES CEREBRO-NEUROLÓGICOS:</h3>
               </div>
               <div>
                 <p class="comentario">Marque si posee alguna y añada los comentarios que considere pertinentes</p>
@@ -363,6 +369,28 @@
                       type="text"
                       name="tumor_cer"
                       placeholder="Ejemplo: Astrocitoma detectado el xx/xx/xxxx"
+                    />
+                  </div>
+                </div>
+              </label>
+              <label class="list-group-item">
+                <div class="list-group-item2">
+                  <div class="tumores-text">
+                    <input
+                      class="form-check-input me-1"
+                      type="checkbox"
+                      name="acv"
+                      value="ACV"
+                    />
+                    ACV
+                  </div>
+
+                  <div class="tumores-input">
+                    <input
+                      id="acv-input"
+                      type="text"
+                      name="acv"
+                      placeholder="Ejemplo: sufrió un ACV el xx/xx/xxxx"
                     />
                   </div>
                 </div>
@@ -471,19 +499,23 @@
                   </div>
               </label>
               <br>
+              <div class="operaciones-cardiacas">
               <p>¿Tiene un marcapasos?
                         <input type="radio" name="marcapasos" value="SI" id="marcapasosSi"> SI
-                        <input type="radio" name="marcapasos" value="NO" id="marcapasosNo"> NO
+                        <input type="radio" name="marcapasos" value="NO" id="marcapasosNo" checked="checked"> NO
+                      </p>
               <p>¿Tiene un cardiodesfibrilador implantado?
                         <input type="radio" name="desfibrilador" value="SI" id="desfibriladorSi"> SI
-                        <input type="radio" name="desfibrilador" value="NO" id="desfibriladorNo"> NO
+                        <input type="radio" name="desfibrilador" value="NO" id="desfibriladorNo" checked="checked"> NO
+                      </p>
               <p>¿Tiene un stent implantado?
                         <input type="radio" name="stent" value="SI" id="stentSi"> SI
-                        <input type="radio" name="stent" value="NO" id="stentNo"> NO
+                        <input type="radio" name="stent" value="NO" id="stentNo" checked="checked"> NO
+                      </p>
               <p>¿Le han realizado un bypass?
                         <input type="radio" name="bypass" value="SI" id="bypassSi"> SI
-                        <input type="radio" name="bypass" value="NO" id="bypassNo"> NO
-                    <div class="tumores-input">
+                        <input type="radio" name="bypass" value="NO" id="bypassNo" checked="checked"> NO
+                      </p>
               </div>
             </div>
             <br />
@@ -521,17 +553,21 @@
                     </div>
                   </div>
                 </label>
+              </div>
                 <br>
+                <div class="operaciones-respiratorias">
               <p>¿Internaciòn por asma?
                         <input type="radio" name="asma" value="SI" id="asmaSi"> SI
-                        <input type="radio" name="asma" value="NO" id="asmaNo"> NO
+                        <input type="radio" name="asma" value="NO" id="asmaNo" checked="checked"> NO
+                      </p>
                 <p>¿Tiene EPOC?
                         <input type="radio" name="epoc" value="SI" id="epocSi"> SI
-                        <input type="radio" name="epoc" value="NO" id="epocNo"> NO
+                        <input type="radio" name="epoc" value="NO" id="epocNo" checked="checked"> NO
+                      </p>
                 <p>¿Es oxigenodependiente?
                         <input type="radio" name="oxig" value="SI" id="oxigSi"> SI
-                        <input type="radio" name="oxig" value="NO" id="oxigNo"> NO
-              </div>
+                        <input type="radio" name="oxig" value="NO" id="oxigNo" checked="checked"> NO
+                      </p>
             </div>
 
             <div class="patologias">
@@ -551,7 +587,7 @@
                         class="form-check-input me-1"
                         type="checkbox"
                         name="contactantes"
-                        value="Contactantes"
+                        value="Alergias contactantes"
                       />
                       Contactantes
                     </div>
@@ -573,7 +609,7 @@
                         class="form-check-input me-1"
                         type="checkbox"
                         name="inhal"
-                        value="Inhalantes"
+                        value="Alergias inhalantes"
                       />
                       Inhalantes
                     </div>
@@ -595,14 +631,14 @@
                         class="form-check-input me-1"
                         type="checkbox"
                         name="ingest"
-                        value="Ingestantes"
+                        value="Alergias ingestantes"
                       />
                       Ingestantes
                     </div>
 
                     <div class="tumores-input">
                       <input
-                        id="Ingestantes-input"
+                        id="Medicamentos-input"
                         type="text"
                         name="ingest"
                         placeholder="Alérgeno/s"
@@ -610,24 +646,50 @@
                     </div>
                   </div>
                 </label>
+                <label class="list-group-item">
+                  <div class="list-group-item2">
+                    <div class="tumores-text">
+                      <input
+                        class="form-check-input me-1"
+                        type="checkbox"
+                        name="alerg_med"
+                        value="Alergias a medicamentos"
+                      />
+                      Medicamentos
+                    </div>
 
+                    <div class="tumores-input">
+                      <input
+                        id="Ingestantes-input"
+                        type="text"
+                        name="alerg_med"
+                        placeholder="Alérgeno/s"
+                      />
+                    </div>
+                  </div>
+                </label>
+              </div>
                  <br>
+                 <div class="alergias">
               <p>¿Ha sufrido vasculitis por hipersensibilidad?
                         <input type="radio" name="vascu" value="SI" id="vascuSi"> SI
-                        <input type="radio" name="vascu" value="NO" id="vascuNo"> NO
+                        <input type="radio" name="vascu" value="NO" id="vascuNo" checked="checked"> NO
+              </p>
               <p>¿Ha sufrido anafilaxia?
                         <input type="radio" name="anaf" value="SI" id="anafSi"> SI
-                        <input type="radio" name="anaf" value="NO" id="anafNo"> NO
+                        <input type="radio" name="anaf" value="NO" id="anafNo" checked="checked"> NO
+                        </p>
               <p>¿Ha sufrido edema de glotis?
                         <input type="radio" name="edema" value="SI" id="edemaSi"> SI
-                        <input type="radio" name="edema" value="NO" id="edemaNo"> NO
+                        <input type="radio" name="edema" value="NO" id="edemaNo" checked="checked"> NO
+              </p>
+                      </div>
 
-
-              </div>
             </div>
           </div>
 
-          <h5>Medicación Regular</h5>
+          <div class="tabla">
+          <h3>Medicación Regular</h3>
           <table class="table">
             <thead>
               <tr>
@@ -682,12 +744,40 @@
               </tr>
             </tbody>
           </table>
+        </div>
+
+        <div class="form-group">
+          <label for="exampleFormControlTextarea1">OTROS DATOS QUE CONSIDERE DE IMPORTANCIA</label>
+          <textarea class="form-control" name="others" id="exampleFormControlTextarea1" rows="3" placeholder="SINDROME / CONDICIONES/ CAPACIDADES DIFERENTES"></textarea>
+        </div>
+
+        <div class="select-color-title">
+          <h3>SELECCIONE SU COLOR DE PREFERENCIA</h3>
+        </div>
+        <div class="choose-color">
+          <div class="qrs">
+            <label for="qrBlue"><img src="{{ url_for('static',filename='imgs/blue.png') }}" alt="Blue Qr" class="qr"></label>
+            <br>
+            <input type="radio" name="qrSelector" id="qrBlue" value="blue">
+          </div>
+          <div class="qrs">
+            <label for="qrBlue"><img src="{{ url_for('static',filename='imgs/orange.png') }}" alt="Orange Qr" class="qr"></label>
+            <br>
+            <input type="radio" name="qrSelector" id="qrOrange" value="orange" checked="checked">
+          </div>
+          <div class="qrs">
+            <label for="qrGreen"><img src="{{ url_for('static',filename='imgs/green.png') }}" alt="Green Qr" class="qr"></label>
+            <br>
+            <input type="radio" name="qrSelector" id="qrGreen" value="green">
+          </div>
+        </div>
 
           <div class="buttonsDiv">
             <button type="submit" class="btn btn-primary btn-block mb-4"
             >GUARDAR
             </button>
           </div>
+            </div>
         </form>
     <!-- Optional JavaScript -->
     <script LANGUAGE="JavaScript">

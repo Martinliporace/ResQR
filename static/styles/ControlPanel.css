@@ -82,9 +82,9 @@ h1 {
   padding-top: 8vh;
   font-style: italic;
   background: -webkit-linear-gradient(90deg, #24b13b, rgb(0, 0, 0));
+  background-clip: content-box;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  /* text-shadow: 3px 3px #00000056; */
   text-decoration: wavy;
 }
 
@@ -102,10 +102,6 @@ h1 {
   padding-top: 5vh;
 }
 
-.datos-personales {
-  padding-bottom: 3rem;
-}
-
 #sectionTitle {
   font-size: 2vmax;
   font-style: italic;
@@ -118,15 +114,19 @@ h1 {
 }
 
 .name-input {
-  margin-bottom: 2rem;
+  width: 100%;
+  padding-top: 20px;
   border-color: #24b13b;
   border-radius: 4px;
-  height: 6vh;
+  height: 4vh;
 }
 
 .documentNacionality {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
+  /* align-items: center; */
+  padding-top: 2rem;
 }
 
 #document {
@@ -154,7 +154,11 @@ h1 {
 }
 
 .deploy-countries {
-  font-size: 1.2vmax;
+  font-size: 1.5vmax;
+}
+
+.p-deploy {
+  font-size: large;
 }
 
 .patologias {
@@ -179,10 +183,6 @@ h1 {
 
 .lista-rango {
   width: 30px;
-}
-
-.sangre {
-  padding-left: 5vw;
 }
 
 .pregnant {
@@ -214,10 +214,6 @@ h1 {
   color: #fff;
 }
 
-.diabetes {
-  padding-right: 5vw;
-}
-
 .nacionality {
   height: 5vh;
 }
@@ -232,8 +228,83 @@ option {
   border-color: #24b13b;
 }
 
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+.operaciones-cardiacas {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-weight: 500;
+  font-size: 1vmax;
+  padding-top: 20px;
+  border: 1px solid;
+  border-color: rgb(204, 204, 204);
+}
+
+.operaciones-respiratorias {
+  display: flex;
+  justify-content: space-around;
+  font-weight: 500;
+  font-size: 1vmax;
+  padding-top: 20px;
+  border: 1px solid;
+  border-color: rgb(204, 204, 204);
+}
+
+.alergias {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  font-weight: 500;
+  font-size: 1vmax;
+  padding-top: 20px;
+  border: 1px solid;
+  border-color: rgb(204, 204, 204);
+}
+
+.tabla {
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+}
+
+.form-group label {
+  font-weight: 500;
+  font-size: 1.5vmax;
+}
+
+.qr {
+  max-width: 10vw;
+}
+
+.qrs {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.choose-color {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.select-color-title {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.qrs input[type="radio"] {
+  transform: scale(2);
 }

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ResQR</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+</head>
+<center>
+<body>
+
+    <div class="container">
+        <h1 class="text-center mt-6 mb-6">ResQR</h1>
+    </div>
+
+<div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="text-center">Datos de Usuario</h5>
+                    </div>
+
+
+
+                                {% for user in users %}
+
+
+
+                                            <form action="/edit/{{user.id}}" method="POST">
+                                                <h5>NOMBRE</h5>
+                                                <h6>{{user.name}}</h6><br>
+                                                <h5>DOCUMENTO</h5>
+                                                <h6>{{user.document}}</h6><br>
+                                                <h5>NACIONALIDAD</h5>
+                                                <h6>{{user.country}}</h6><br>
+                                                <h5>SERVICIO/S MÉDICO/S</h5>
+                                                {% for k,v in user.services.items() %}
+                                                <h6>{{k}} <a href="tel:+598{{v}}">LLAMAR</a></h6>
+                                                {% endfor %}<br>
+                                                <h5>FECHA DE NACIMIENTO</h5>
+                                                <h6>{{user.birthday}}</h6><br>
+                                                <h5>SEXO</h5>
+                                                <h6>{{user.sex}}</h6><br>
+                                                {% if user.pregnant != "None" %}
+                                                <h5>EMBARAZADA</h5><br>
+                                                {% endif %}
+                                                <h5>TIPO DE SANGRE</h5>
+                                                <h6>{{user.blood}}</h6><br>
+                                                {% if user.diabetes == "si" %}
+                                                <h5>Persona diabética</h5>
+                                                    {% if user.diabetes_tipo != "NONE" %}
+                                                <h6>Diabetes tipo {{user.diabetes_tipo}}</h6>
+                                                    {% if user.insulina == "si" %}
+                                                <h6>Insulino dependiente</h6>
+                                                    {% endif %}
+                                                    {% endif %}
+                                                {% endif %}
+                                                <br>
+                                                {% if user.vascu == "SI" %}
+                                                    <h5>Antecedente/s de vasculitis por hipersensibilidad</h5>
+                                                {% endif %}
+                                                {% if user.anaf == "SI" %}
+                                                    <h5>Antecedente/s de anafilaxia</h5>
+                                                {% endif %}
+                                                {% if user.edema == "SI" %}
+                                                    <h5>Antecedente/s de edema de glotis</h5>
+                                                {% endif %}
+                                                {% if user.marcapasos == "SI" %}
+                                                    <h5>Posée marcapasos</h5>
+                                                {% endif %}
+                                                {% if user.desfibrilador == "SI" %}
+                                                    <h5>Posée cardiodesfibrilador</h5>
+                                                {% endif %}
+                                                {% if user.stent == "SI" %}
+                                                    <h5>Posée stent</h5>
+                                                {% endif %}
+                                                {% if user.bypass == "SI" %}
+                                                    <h5>Se realizó bypass</h5>
+                                                {% endif %}
+                                                {% if user.asma == "SI" %}
+                                                    <h5>Internación por asma</h5>
+                                                {% endif %}
+                                                {% if user.epoc == "SI" %}
+                                                    <h5>Sufre de EPOC</h5>
+                                                {% endif %}
+                                                {% if user.oxig == "SI" %}
+                                                    <h5>Oxígenodependiente</h5>
+                                                {% endif %}
+
+
+
+                                                <br><h5>CONTACTOS DE EMERGENCIA</h5>
+                                                <h6>1: NOMBRE: {{user.contacts[0]}}    PARENTESCO: {{user.contacts[1]}}<br>TELÉFONO: <a href="tel:+598{{user.contacts[2]}}">LLAMAR</a></h6>
+                                                <h6>2: NOMBRE: {{user.contacts[3]}}    PARENTESCO: {{user.contacts[4]}}<br>TELÉFONO: <a href="tel:+598{{user.contacts[5]}}">LLAMAR</a></h6><br>
+                                                <h5>PATOLOGÍAS</h5>
+                                                {% for k,v in user.pathologies.items() %}
+                                                <h6>Patología: {{k}}<br> Observaciones: {{v}}</h6><br>
+                                                {% endfor %}
+                                                <h5>MEDICACIÓN</h5>
+                                                {% for med in user.medication %}
+                                                <h6>{{med}}</h6>
+                                                {% endfor %}
+                                                <h5>OTROS DATOS</h5>
+                                                <h6>{{user.others}}</h6><br>
+
+
+                                            </form>
+
+
+
+                                {% endfor %}
+
+
+                    </div>
+
+                </div>
+
+
+
+
+
+
+
+
+
+</body>
+    </center>
+</html>

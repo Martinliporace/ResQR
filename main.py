@@ -34,9 +34,9 @@ def addUser():
     contactsList = ['contact1', 'contact2']
     pathologiesList = ['alzheimer', 'epilepsia', 'neuropatias',                                                 'traumatismos', 'tumor_cer', 'infeccion_card',
                        'miocardiopatia', 'valvulas', 'operacion_card', 'paro',
-                       'bypass', 'cancer_pulmonar', 'asma', 'epoc',
-                       'oxig', 'contactantes', 'inhal', 'ingest', 'vascu',
-                       'anaf', 'edema']
+                       'acv','bypass', 'cancer_pulmonar', 'asma', 'epoc',
+                       'oxig', 'contactantes', 'inhal', 'ingest', 'alerg_med',
+                       'vascu', 'anaf', 'edema']
 
     name = request.form['name-input']
     document = request.form['document']
@@ -48,6 +48,17 @@ def addUser():
     diabetes = request.form['diabetes']
     diabetes_tipo = request.form['diabetes_tipo']
     insulina = request.form['insulina']
+    vascu = request.form['vascu']
+    anaf = request.form['anaf']
+    edema = request.form['edema']
+    asma = request.form['asma']
+    epoc = request.form['epoc']
+    oxig = request.form['oxig']
+    marcapasos = request.form['marcapasos']
+    desfibrilador = request.form['desfibrilador']
+    stent = request.form['stent']
+    bypass = request.form['bypass']
+    others = request.form['others']
     pathologies = {}
     medicationDict = {}
     servicesDict = {}
@@ -71,6 +82,7 @@ def addUser():
 
         if len(checkPathologies) > 1:
             pathologies[checkPathologies[0]] = checkPathologies[1]
+
     for x in range(11):
         checkMedication = request.form.getlist("medicacion" + str(x))
 
@@ -79,17 +91,20 @@ def addUser():
     medication = []
     for key, value in medicationDict.items():
         if value != '':
-            medication.append(key+' :'+value+'\n')
-    services = []
+            medication.append(key + ': ' + value)
+    services = {}
     for key, value in servicesDict.items():
         if value != '':
-            services.append(key+' :'+value+'\n')
+            services[key]=value
 
 
     if name and document:
         user = User(id, email, password, name, document, country,
                  birthday, sex, pregnant, blood, diabetes, diabetes_tipo,
-                 insulina, services, contacts, pathologies, medication)
+                 insulina, marcapasos, desfibrilador, stent,
+                 bypass, asma, epoc, oxig, vascu, anaf, edema,  services,
+                 contacts, pathologies, medication, others)
+
         users.update_one({'id': id},
                          {'$set': {'id' : id,
                                    'email' : email,
@@ -104,13 +119,24 @@ def addUser():
                                    'diabetes' : diabetes,
                                    'diabetes_tipo' : diabetes_tipo,
                                    'insulina' : insulina,
+                                   'vascu' : vascu,
+                                   'anaf' : anaf,
+                                   'edema' : edema,
+                                   'marcapasos' : marcapasos,
+                                   'desfibrilador': desfibrilador,
+                                   'stent': stent,
+                                   'bypass': bypass,
+                                   'asma' : asma,
+                                   'epoc': epoc,
+                                   'oxig' : oxig,
                                    'services' : services,
                                    'contacts' : contacts,
                                    'pathologies' : pathologies,
                                    'medication' : medication,
+                                   'others' : others
                                    }})
-
-        create_qr(data=id)
+        design = request.form['qrSelector']
+        create_qr(data=id, design=design)
         return (redirect(url_for('qr_create', user_id=id)))
     else:
         return 'notFound()'
@@ -140,6 +166,7 @@ def edit(user_id):
     alergies = request.form['alergies']
     pathologies = request.form['pathologies']
     medication = request.form['medication']
+    others = request.form['others']
 
     if name and document:
         users.update_one({'id': user_id},
@@ -154,7 +181,8 @@ def edit(user_id):
                                    'tel_contact': tel_contact,
                                    'alergies': alergies,
                                    'pathologies': pathologies,
-                                   'medication': medication
+                                   'medication': medication,
+                                   'others': others
                                    }})
         response = jsonify({'message': 'Usuario ' + name +
                             ' actualizado correctamente'})
@@ -252,6 +280,13 @@ def newRegister():
 def logout():
     session.pop("usuario", None)
     return redirect("/login")
+
+@app.route('/profile/<string:user_id>', methods=['GET'])
+def view_profile(user_id):
+    users = db['users']
+    id = user_id
+    userReceived = users.find({"id": user_id})
+    return render_template('view_profile.html', users=userReceived)
 
 
 # Middleware

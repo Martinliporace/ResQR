@@ -4,7 +4,9 @@
 class User:
     def __init__(self, id='', email='', password='', name='', document='', country='',
                  birthday='', sex='', pregnant='', blood='', diabetes='', diabetes_tipo='',
-                 insulina='', services='', contacts='', pathologies='', medication=''):
+                 insulina='', marcapasos='', desfibrilador='', stent='', bypass='',
+                 asma= '', epoc='', oxig='', vascu='', anaf='', edema='', services='', contacts='', pathologies='',
+                 medication='', others=''):
         self.id = id
         self.email = email
         self.password = password
@@ -18,10 +20,21 @@ class User:
         self.diabetes = diabetes
         self.diabetes_tipo = diabetes_tipo
         self.insulina = insulina
+        self.marcapasos = marcapasos
+        self.desfibrilador = desfibrilador
+        self.stent = stent
+        self.bypass = bypass
+        self.vascu = vascu
+        self.anaf = anaf
+        self.edema = edema
+        self.asma = asma
+        self.epoc = epoc
+        self.oxig = oxig
         self.services = services
         self.contacts = contacts
         self.pathologies = pathologies
         self.medication = medication
+        self.others = others
 
     def toDBCollection(self):
         return {
@@ -38,8 +51,19 @@ class User:
             'diabetes': self.diabetes,
             'diabetes_tipo': self.diabetes_tipo,
             'insulina': self.insulina,
+            'marcapasos': self.marcapasos,
+            'desfibrilador': self.desfibrilador,
+            'stent': self.stent,
+            'bypass': self.bypass,
+            'vascu' : self.vascu,
+            'anaf' : self.anaf,
+            'edema' : self.edema,
+            'asma': self.asma,
+            'epoc': self.epoc,
+            'oxig': self.oxig,
             'services': self.services,
             'contacts': self.contacts,
             'pathologies': self.pathologies,
-            'medication': self.medication
+            'medication': self.medication,
+            'others': self.others
         }
